@@ -1,6 +1,7 @@
 import java.util.Set;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.HashSet;
 
 /**
  * Class Room - a room in an adventure game.
@@ -20,6 +21,8 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> exits;        // stores exits of this room.
+    private Items items;
+    private HashSet itemList;
 
     /**
      * Create a room described "description". Initially, it has
@@ -31,6 +34,8 @@ public class Room
     {
         this.description = description;
         exits = new HashMap<>();
+        itemList = new HashSet();
+        items = new Items();
     }
 
     /**
@@ -51,7 +56,18 @@ public class Room
     {
         return description;
     }
-
+    
+    /**
+     * 
+     */
+    public String getItemDescription()
+    {
+        String itemString = "You see " + itemList.size() + " items:";
+        for(Iterator i = itemList.iterator(); i.hasNext();)
+            itemString += "(" + ((Item) i.next()).getDescription() + ")";
+        return itemString;
+    }
+    
     /**
      * Return a description of the room in the form:
      *     You are in the kitchen.
@@ -60,7 +76,7 @@ public class Room
      */
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + getExitString();
+        return "You are " + description + ".\n" + getExitString() + "\n" + getItemDescription();
     }
 
     /**
@@ -73,7 +89,7 @@ public class Room
         String returnString = "Exits:";
         Set<String> keys = exits.keySet();
         for(String exit : keys) {
-            returnString += " " + exit;
+            returnString += " (" + exit + ")";
         }
         return returnString;
     }
@@ -87,6 +103,30 @@ public class Room
     public Room getExit(String direction) 
     {
         return exits.get(direction);
+    }
+    
+    /**
+     * Add item
+     */
+    public void addItem(Item item)
+    {
+        itemList.add(item);
+    }
+    
+    /**
+     * get item
+     */
+    public Item getItem(String name)
+    {
+        return (Item) items.get(name);
+    }
+    
+    /**
+     * remove item
+     */
+    public Item removeItem(String name)
+    {
+        return (Item) items.remove(name);
     }
 }
 
