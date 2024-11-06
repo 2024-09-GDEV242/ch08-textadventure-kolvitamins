@@ -49,7 +49,7 @@ public class Items
     {
         String returnString = "";
         for( Iterator i = items.values().iterator(); i.hasNext();)
-            returnString += " " + ((Item) i.next()).getDescription();
+            returnString += " " + ((Item) i.next()).getName();
         return returnString;
     }
 }

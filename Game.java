@@ -28,15 +28,17 @@ public class Game
      */
     public Game() 
     {
-        createRooms();
+        Room startRoom = createRooms();
         player = new Player("John Zuul");
         parser = new Parser();
+        player.enterRoom(startRoom);
     }
 
     /**
      * Create all the rooms and link their exits together.
+     * @return Outside as the first room
      */
-    private void createRooms()
+    private Room createRooms()
     {
         Room outside, lobby, theater, pub, lab, office, dorms, street, home;
       
@@ -51,7 +53,7 @@ public class Game
         street = new Room("outside of campus by the road");
         home = new Room("back at home");
         
-        outside.addItem(new Item("bike"));
+        outside.addItem(new Item("bike")); 
         outside.addItem(new Item("branch"));
         theater.addItem(new Item("old popcorn"));
         theater.addItem(new Item("ticket stub"));
@@ -90,7 +92,7 @@ public class Game
         
         home.setExit("take the road", street);
 
-        currentRoom = outside;  // start game outside
+        return outside;  // start game outside
     }
 
     /**
@@ -121,7 +123,7 @@ public class Game
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
-        System.out.println(currentRoom.getLongDescription());
+        System.out.println(player.getLongDescription());
     }
 
     /**
@@ -214,7 +216,7 @@ public class Game
             System.out.println("You don't see that here.");
         }
         else{
-            System.out.println("Picked up " + item.getDescription());
+            System.out.println("Picked up " + item.getName());
         }
     }
     
@@ -237,7 +239,7 @@ public class Game
             System.out.println("You don't have anything like that");
         }
         else{
-            System.out.println("Dropped " + item.getDescription());
+            System.out.println("Dropped " + item.getName());
         }
     }
     

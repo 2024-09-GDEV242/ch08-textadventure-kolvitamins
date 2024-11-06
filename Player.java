@@ -63,7 +63,7 @@ public class Player
     public Item pickUpItem(String itemName)
     {
         Item item = currentRoom.removeItem(itemName);
-        items.put(item.getDescription(), item);
+        items.put(item.getName(), item);
         return item;
     }
     
@@ -82,4 +82,14 @@ public class Player
         return item;
     }
     
+    /**
+     * Gives the players current room and inventory.
+     * @return string of room and items
+     */
+    public String getLongDescription()
+    {
+        String returnString = currentRoom.getLongDescription();
+        returnString += "\n" + checkInventory();
+        return returnString;
+    }
 }

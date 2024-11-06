@@ -64,7 +64,7 @@ public class Room
     {
         String itemString = "You see " + itemList.size() + " items:";
         for(Iterator i = itemList.iterator(); i.hasNext();)
-            itemString += "(" + ((Item) i.next()).getDescription() + ")";
+            itemString += "(" + ((Item) i.next()).getName() + ")";
         return itemString;
     }
     

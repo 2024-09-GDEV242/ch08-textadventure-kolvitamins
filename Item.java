@@ -8,22 +8,24 @@
 public class Item
 {
     // instance variables - replace the example below with your own
-    private String description;
+    private String name;
 
     /**
-     * 
+     * Constructor for Item class
+     * @return Item
      */
-    public Item(String description)
+    public Item (String name)
     {
-        this.description = description;
+        this.name = name;
     }
 
     /**
-     * Get description
+     * Gets description of item
+     * @return string of item name
      */
-    public String getDescription()
+    public String getName()
     {
-        return description;
+        return name;
     }
     
 }
