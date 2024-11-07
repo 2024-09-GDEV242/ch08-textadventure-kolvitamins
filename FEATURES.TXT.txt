@@ -1,0 +1,4 @@
+Features:
+-Rooms can hold multiple items.
+-Players can use the "back" command to go as far back as they have gone forward.
+-Players have a player class that allows them to pick up multiple items
