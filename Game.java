@@ -1,9 +1,8 @@
 import java.util.Stack;
 /**
  *  This class is the main class of the "World of Zuul" application. 
- *  "World of Zuul" is a very simple, text based adventure game.  Users 
- *  can walk around some scenery. That's all. It should really be extended 
- *  to make it more interesting!
+ *  "World of Zuul" is a somewhat simple, text based adventure game.  Users 
+ *  can walk explore, pick up items and even go home!
  * 
  *  To play this game, create an instance of this class and call the "play"
  *  method.
@@ -12,8 +11,8 @@ import java.util.Stack;
  *  rooms, creates the parser and starts the game.  It also evaluates and
  *  executes the commands that the parser returns.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  Jeffrey Kolvites
+ * @version 11/3/2024
  */
 
 public class Game 
@@ -91,8 +90,9 @@ public class Game
         street.setExit("take the road", home);
         
         home.setExit("take the road", street);
-
-        return outside;  // start game outside
+        
+        currentRoom = outside;
+        return currentRoom;  // start game outside
     }
 
     /**
@@ -194,7 +194,7 @@ public class Game
      */
     private void look(Command command)
     {
-        System.out.println(currentRoom.getLongDescription());
+        System.out.println(player.getLongDescription());
     }
     
     /**

@@ -13,8 +13,8 @@ import java.util.HashSet;
  * connected to other rooms via exits.  For each existing exit, the room 
  * stores a reference to the neighboring room.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  Jeff Kolvites
+ * @version 11/3/2024
  */
 
 public class Room 
@@ -106,15 +106,19 @@ public class Room
     }
     
     /**
-     * Add item
+     * Add item adds an item to the item list
+     * @param the name of the item
      */
     public void addItem(Item item)
     {
         itemList.add(item);
+        items.put(item.getName(), item);
     }
     
     /**
-     * get item
+     * Get item gets the item name
+     * @param the item name
+     * @return the item
      */
     public Item getItem(String name)
     {
@@ -122,7 +126,9 @@ public class Room
     }
     
     /**
-     * remove item
+     * Remove item removes the item from the list
+     * @param the item name
+     * @return the item
      */
     public Item removeItem(String name)
     {

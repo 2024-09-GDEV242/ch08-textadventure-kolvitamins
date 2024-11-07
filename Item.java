@@ -1,6 +1,6 @@
 
 /**
- * Item class controls the description and weight of Items.
+ * Item class controls the name of items. 
  *
  * @author Jeffrey Kolvites
  * @version 11/3/24
